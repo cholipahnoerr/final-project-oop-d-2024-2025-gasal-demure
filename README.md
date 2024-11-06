@@ -8,27 +8,28 @@
     2. [Izzudin Ali Akbari - 5025231313]
     3. [Alya Rahmatillah Machmud - 5025231315]
     4. [Cholipah Noer Amanah - 5025231317]
-* **Tech Stack**: [Python, Framework, Tools yang digunakan]
+* **Tech Stack**: [Python, StudioCode, Pygame library]
 
 ## 2. Deskripsi Game
 
 ### 2.1 Konsep Game
-* **Genre**: 
-* **Gameplay/Rule**: 
-* **Objective**: 
-* **Single/Multi Player**: 
+* **Genre**: Arcade, Endless Runner
+* **Gameplay/Rule**: Pemain mengendalikan seekor burung yang bergerak maju secara otomatis dan jatuh karena gravitasi. Tujuannya adalah menjaga burung tetap di udara dengan mengetuk layar atau menekan tombol untuk membuatnya "mengepak" ke atas. Pemain harus menghindari tabrakan dengan rintangan (pipa) sambil mempertahankan posisi burung di dalam batas layar.
+* **Objective**: Raih skor tertinggi dengan melewati pipa sebanyak-banyaknya tanpa menabraknya atau terjatuh.
+* **Single/Multi Player**: Single Player
 
 ### 2.2 Fitur Utama
-1. [Fitur 1]
-2. [Fitur 2]
-3. [Fitur n]
+1. Pembuatan Rintangan: Pipa yang dibuat secara acak dengan celah yang harus dilewati pemain.
+2. Sistem Penilaian: Skor meningkat dengan setiap pipa yang berhasil dilewati.
+3. Simulasi Fisika: Gravitasi dan mekanika mengepak menciptakan gerakan burung yang realistis.
+4. Layar Game Over: Menampilkan skor akhir dan menyediakan opsi untuk memulai kembali permainan.
 
 ## 3. Implementasi Fitur Wajib
 
 ### 3.1 Save/Load System
-* **Implementasi**:
-* **Konsep OOP**:
-* **Penerapan SOLID**:
+* **Implementasi**: Permainan ini memiliki sistem yang menyimpan skor tertinggi pemain dalam sebuah berkas. Setiap kali permainan berakhir, sistem akan membandingkan skor saat ini dengan skor tertinggi yang tersimpan dan memperbaruinya jika skor baru lebih tinggi.
+* **Konsep OOP**: `Encapsulation & File I/O` digunakan di sini. Class `ScoreManager` menangani penyimpanan dan pemuatan skor tinggi, melindungi logika inti, dan memastikan desain modular.
+* **Penerapan SOLID**: Single Responsibility Principle (SRP): `ScoreManager` didedikasikan hanya untuk mengelola fungsi penyimpanan/pemuatan skor tinggi.
 * **Design Pattern yang Digunakan**:
 * **Code Snippet**:
 ```
