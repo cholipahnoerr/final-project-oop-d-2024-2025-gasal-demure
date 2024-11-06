@@ -33,19 +33,58 @@
 * **Design Pattern yang Digunakan**:
 * **Code Snippet**:
 ```
-[Code snippet here]
+import json
+
+class ScoreManager:
+    def __init__(self, file_path='highscore.json'):
+        self.file_path = file_path
+        self.high_score = self.load_high_score()
+
+    def load_high_score(self):
+        try:
+            with open(self.file_path, 'r') as file:
+                return json.load(file).get('high_score', 0)
+        except FileNotFoundError:
+            return 0
+
+    def save_high_score(self, score):
+        if score > self.high_score:
+            self.high_score = score
+            with open(self.file_path, 'w') as file:
+                json.dump({'high_score': self.high_score}, file)
 ```
 
 ### 3.2 Achievement System
 * **Jenis Achievement**:
-    1. [Implementasi Achievement 1]
-    2. [Implementasi Achievement 2]
-* **Konsep OOP**:
-* **Penerapan SOLID**:
+    Pencapaian berdasarkan tonggak pencapaian (misalnya, "Pipa Pertama Lulus," "10 Pipa Lulus," "Nilai Tertinggi Tercapai").
+    1. Penerapan Pencapaian 1: "Pipa Pertama Berhasil" - Diaktifkan saat pemain berhasil melewati pipa pertama mereka.
+    2. Penerapan Pencapaian 2: "Nilai Tertinggi Tercapai" - Diaktifkan saat pemain mengalahkan skor tertinggi.
+* **Konsep OOP**: `Inheritance & Polymorphism`. Pencapaian yang berbeda-beda diperoleh dari class `Achievement`, yang memungkinkan masing-masing untuk menentukan kondisi yang unik untuk membuka kunci.
+* **Penerapan SOLID**: Open/Closed Principle (OCP). Sistem dapat diperluas dengan pencapaian baru tanpa mengubah logika pencapaian yang ada.
 * **Design Pattern yang Digunakan**:
 * **Code Snippet**:
 ```
-[Code snippet here]
+class Achievement:
+    def __init__(self, name):
+        self.name = name
+        self.unlocked = False
+
+    def check_condition(self, *args, **kwargs):
+        raise NotImplementedError
+
+class FirstPipeAchievement(Achievement):
+    def check_condition(self, pipes_passed):
+        if pipes_passed >= 1:
+            self.unlocked = True
+
+class HighScoreAchievement(Achievement):
+    def __init__(self, high_score):
+        super().__init__('High Score Reached')
+        self.high_score = high_score
+
+    def check_condition(self, current_score):
+        if current_score > self.high_score:
+            self.unlocked = True
 ```
 
 ## 4. Implementasi Fitur Lain
