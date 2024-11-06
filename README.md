@@ -4,10 +4,10 @@
 ## 1. Informasi Umum
 * **Nama Game**: [Nama Game]
 * **Anggota Kelompok**:
-    1. [Nama - NRP]
-    2. [Nama - NRP]
-    3. [Nama - NRP]
-    4. [Nama - NRP]
+    1. [Nadya Zafira - 5025231310]
+    2. [Izzudin Ali Akbari - 5025231313]
+    3. [Alya Rahmatillah Machmud - 5025231315]
+    4. [Cholipah Noer Amanah - 5025231317]
 * **Tech Stack**: [Bahasa Pemrograman, Framework, Tools yang digunakan]
 
 ## 2. Deskripsi Game
