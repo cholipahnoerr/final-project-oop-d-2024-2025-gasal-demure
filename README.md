@@ -8,7 +8,7 @@
     2. [Izzudin Ali Akbari - 5025231313]
     3. [Alya Rahmatillah Machmud - 5025231315]
     4. [Cholipah Noer Amanah - 5025231317]
-* **Tech Stack**: [Bahasa Pemrograman, Framework, Tools yang digunakan]
+* **Tech Stack**: [Python, Framework, Tools yang digunakan]
 
 ## 2. Deskripsi Game
 
