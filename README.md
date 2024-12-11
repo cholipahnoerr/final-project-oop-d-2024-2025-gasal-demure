@@ -87,17 +87,37 @@ def showHistory(self):
 ```
 
 ## 5. Screenshot dan Demo
-* **Screenshot 1**: [Deskripsi]
-* **Screenshot 2**: [Deskripsi]
+* **Screenshot 1**: Main Menu
+
+    ![WhatsApp Image 2024-12-11 at 13 55 56_343e0d48](https://github.com/user-attachments/assets/e8572613-d131-4fb3-9c12-4bb600b10dd4)
+
+* **Screenshot 2**: Difficulty
+
+    ![WhatsApp Image 2024-12-11 at 13 56 31_d5e78244](https://github.com/user-attachments/assets/40ac13cf-2f2a-4b42-af71-a43c48f124d5)
+
+* **Screenshot 3**: History
+
+    ![WhatsApp Image 2024-12-11 at 13 59 11_9bb0fbea](https://github.com/user-attachments/assets/03c6aa85-48cb-49d6-bbae-6d6838f2d494)
+
+* **Screenshot 4**: Start
+  
+     ![WhatsApp Image 2024-12-11 at 11 53 52_6c910d6b](https://github.com/user-attachments/assets/d895d4df-ae3e-43b7-ab7d-01ce82905223)
+
+* **Screenshot 5**: Game Over
+
+    ![WhatsApp Image 2024-12-11 at 14 00 07_7aaff691](https://github.com/user-attachments/assets/27d6b613-2eba-4bfe-9f34-3094b0573bb0)
+
 * **Link Demo Video**: [URL]
 
 ## 6. Panduan Instalasi dan Menjalankan Game
-1. [Langkah 1]
-2. [Langkah 2]
-3. [Langkah n]
+1. Download semua file dalam folder
+2. Jalankan di terminal dengan perintah `python game.py`
+3. Pilih level yang diinginkan
+4. Start
+5. Restart/Kembali ke main menu untuk melihat history
 
 ## 7. Kendala dan Solusi
-1. **Kendala 1**:
+1. **Kendala 1**: 
     * Solusi:
 2. **Kendala 2**:
     * Solusi:
