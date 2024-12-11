@@ -107,6 +107,16 @@ def showHistory(self):
 
     ![WhatsApp Image 2024-12-11 at 14 00 07_7aaff691](https://github.com/user-attachments/assets/27d6b613-2eba-4bfe-9f34-3094b0573bb0)
 
+* **Screenshot 6**: Achievment
+  
+    ![WhatsApp Image 2024-12-11 at 15 05 09_0e8e1e78](https://github.com/user-attachments/assets/ec776239-6eef-4988-b95d-5caeec31bc19)
+
+* **Screenshot 7**: Difficulty
+
+    ![WhatsApp Image 2024-12-11 at 15 08 20_0cb7e57f](https://github.com/user-attachments/assets/190d6708-05ad-4e3e-af87-aa10a806ba05)
+
+
+
 * **Link Demo Video**: [URL]
 
 ## 6. Panduan Instalasi dan Menjalankan Game
