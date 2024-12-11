@@ -2,13 +2,13 @@
 # Laporan Akhir Final Project OOP D
 
 ## 1. Informasi Umum
-* **Nama Game**: [Nama Game]
+* **Nama Game**: Flappy Bird
 * **Anggota Kelompok**:
-    1. [Nadya Zafira - 5025231310]
-    2. [Izzudin Ali Akbari - 5025231313]
-    3. [Alya Rahmatillah Machmud - 5025231315]
-    4. [Cholipah Noer Amanah - 5025231317]
-* **Tech Stack**: [Python, StudioCode, Pygame library]
+    1. Nadya Zafira - 5025231310
+    2. Izzudin Ali Akbari - 5025231313
+    3. Alya Rahmatillah Machmud - 5025231315
+    4. Cholipah Noer Amanah - 5025231317
+* **Tech Stack**: Python, StudioCode, Pygame library
 
 ## 2. Deskripsi Game
 
@@ -40,11 +40,9 @@ def save_score_to_file(score):
 
 ### 3.2 Achievement System
 * **Jenis Achievement**: Pencapaian berdasarkan jumlah skor tertentu.
-* **Implementasi Achievement**: Pemain mendapatkan pencapaian setelah mencapai skor tertentu (contoh: "Pipe Whisperer" pada skor 5).
-
-
-    1. Penerapan Pencapaian 1: "Pipa Pertama Berhasil" - Diaktifkan saat pemain berhasil melewati pipa pertama mereka.
-    2. Penerapan Pencapaian 2: "Nilai Tertinggi Tercapai" - Diaktifkan saat pemain mengalahkan skor tertinggi.
+* **Implementasi Achievement**: Pemain mendapatkan pencapaian setelah mencapai skor tertentu.
+    1. Penerapan Pencapaian 1: "Pipe Whisperer" pada skor 5.
+    2. Penerapan Pencapaian 2: "uwuwuwuwuw" pada skor 25.
 * **Konsep OOP**: `Inheritance & Polymorphism`. Pencapaian yang berbeda-beda diperoleh dari class `Achievement`, yang memungkinkan masing-masing untuk menentukan kondisi yang unik untuk membuka kunci.
 * **Penerapan SOLID**: Open/Closed Principle (OCP). Sistem dapat diperluas dengan pencapaian baru tanpa mengubah logika pencapaian yang ada.
 * **Design Pattern yang Digunakan**:
@@ -121,7 +119,7 @@ def showHistory(self):
 
 ## 6. Panduan Instalasi dan Menjalankan Game
 1. Download semua file dalam folder
-2. Jalankan di terminal dengan perintah `python game.py`
+2. Jalankan di terminal dengan perintah `python3 -m game.py`
 3. Pilih level yang diinginkan
 4. Start
 5. Restart/Kembali ke main menu untuk melihat history
@@ -133,5 +131,10 @@ def showHistory(self):
     * Solusi:
 
 ## 8. Kesimpulan dan Pembelajaran
-* **Kesimpulan**:
+* **Kesimpulan**: Proyek pengembangan game Flappy Bird menggunakan OOP berhasil menerapkan fitur Save/Load System dan Achievement System yang meningkatkan pengalaman bermain. Penerapan prinsip SOLID membuat kode lebih terstruktur dan mudah dipelihara. Fitur penyesuaian tingkat kesulitan dan sistem pencapaian memberikan tantangan dan motivasi lebih bagi pemain.
 * **Pembelajaran**:
+  1. Penerapan OOP memudahkan pengelolaan objek dan kode.
+  2. Prinsip SOLID membuat kode lebih modular dan mudah dikembangkan.
+  3. Save/Load System dan Achievement System meningkatkan pengalaman pengguna.
+  4. Penyesuaian tingkat kesulitan memberikan tantangan sesuai kemampuan pemain.
+Proyek ini memperkaya pemahaman tentang pengembangan game dan manajemen kode yang efisien.
