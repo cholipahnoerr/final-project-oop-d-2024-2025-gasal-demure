@@ -8,7 +8,7 @@
     2. Izzudin Ali Akbari - 5025231313
     3. Alya Rahmatillah Machmud - 5025231315
     4. Cholipah Noer Amanah - 5025231317
-* **Tech Stack**: Python, StudioCode, Pygame library
+* **Tech Stack**: Python, Visual Studio Code, Pygame library
 
 ## 2. Deskripsi Game
 
@@ -19,7 +19,7 @@
 * **Single/Multi Player**: Single Player
 
 ### 2.2 Fitur Utama
-1. Sistem Save/Load skor
+1. Sistem Penyimpanan dan Pemulihan Skor (Save/Load skor)
 2. Sistem Pencapaian (Achievement System)
 3. Pemilihan tingkat kesulitan
 
@@ -27,9 +27,9 @@
 ## 3. Implementasi Fitur Wajib
 
 ### 3.1 Save/Load System
-* **Implementasi**: Skor disimpan dalam file "score_history.txt" dan dapat dimuat saat dibutuhkan.
-* **Konsep OOP**: Menggunakan kelas dan metode untuk membaca, menulis, dan menghapus data skor.
-* **Penerapan SOLID**: Single Responsibility Principle (SRP) - Setiap fungsi memiliki tanggung jawab tunggal untuk mengelola skor.
+* **Implementasi**: Skor disimpan dalam file "score_history.txt" dan dapat dimuat di menu history saat dibutuhkan.
+* **Konsep OOP**: Menggunakan prinsip enkapsulasi dengan kelas `ScoreManager` dan methodnya untuk menangani semua aspek terkait skor, seperti membaca dan menulis skor.
+* **Penerapan SOLID**: Single Responsibility Principle (SRP) - Setiap fungsi memiliki tanggung jawab tunggal untuk mengelola skor. Dalam konteks ini, kelas `ScoreManager` mengatur hanya tentang keterkaitan skor, dan `SoundManager` yang berfokus dalam mengelola sound.
 * **Design Pattern yang Digunakan**: Tidak menggunakan desain pola khusus untuk fitur ini.
 * **Code Snippet**:
 ```
