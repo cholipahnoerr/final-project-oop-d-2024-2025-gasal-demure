@@ -32,10 +32,62 @@
 * **Penerapan SOLID**: Single Responsibility Principle (SRP) - Setiap fungsi memiliki tanggung jawab tunggal untuk mengelola skor. Dalam konteks ini, kelas `ScoreManager` mengatur hanya tentang keterkaitan skor, dan `SoundManager` yang berfokus dalam mengelola sound.
 * **Design Pattern yang Digunakan**: Tidak menggunakan desain pola khusus untuk fitur ini.
 * **Code Snippet**:
+
+SRP - SoundManager
 ```
-def save_score_to_file(score):
-    with open("score_history.txt", "a") as file:
-        file.write(f"{score}\n")
+class SoundManager:
+    def __init__(self):
+        self.flap_sound = pg.mixer.Sound("assets/sfx/flap.wav")
+        self.score_sound = pg.mixer.Sound("assets/sfx/score.wav")
+        self.dead_sound = pg.mixer.Sound("assets/sfx/dead.wav")
+        self.achievement_sound = pg.mixer.Sound("assets/sfx/success.mp3")
+        self.bonus_sound = pg.mixer.Sound("assets/sfx/bonus.mp3")
+
+    def play_flap(self):
+        self.flap_sound.play()
+
+    def play_score(self):
+        self.score_sound.play()
+
+    def play_dead(self):
+        self.dead_sound.play()
+
+    def play_achievement(self):
+        self.achievement_sound.play()
+
+    def play_bonus(self):
+        self.bonus_sound.play()
+
+```
+
+SRP - ScoreManager
+```
+    class ScoreManager:
+    def __init__(self):
+        self.score = 0
+        self.high_score = 0
+
+    def save_score_to_file(self):
+        with open("score_history.txt", "a") as file:
+            file.write(f"{self.score}\n")
+
+    def read_score_history(self):
+        try:
+            with open("score_history.txt", "r") as file:
+                scores = file.readlines()
+            return [int(score.strip()) for score in scores]
+        except FileNotFoundError:
+            return []
+
+    def delete_score_history(self):
+        if os.path.exists("score_history.txt"):
+            os.remove("score_history.txt")
+
+    def update_high_score(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+        self.save_score_to_file()
+
 ```
 
 ### 3.2 Achievement System
@@ -48,27 +100,105 @@ def save_score_to_file(score):
 * **Design Pattern yang Digunakan**:
 * **Code Snippet**:
 ```
-if self.score == 5:
-    achievement_sound.play()  # Play achievement sound
-    print("Achievement unlocked: Pipe Whisperer!")
+    def move_pipes(self, dt):
+        for pipe in self.pipes:
+            pipe.update(dt)
+            if pipe.rect_up.right < self.bird.rect.left and not pipe.passed:
+                pipe.passed = True
+                self.score_manager.score += 1
+                self.sound_manager.play_score()
+                if self.score_manager.score % 10 == 0:
+                    self.sound_manager.play_bonus()
+                if self.score_manager.score in [5, 25]:
+                    self.sound_manager.play_achievement()
+                    print("Achievement unlocked: Pipe Whisperer!")
+
+        if len(self.pipes) != 0 and self.pipes[0].rect_up.right < 0:
+            self.pipes.pop(0)
 
 ```
 
 ## 4. Implementasi Fitur Lain
 
-### 4.1 Fitur Tampilan Menu
+### 4.1 Fitur Tampilan Menu dan Tingkat Kesulitan
 * **Implementasi**: Menu utama dengan pilihan "Start", "History", dan "Difficulty".
 * **Konsep OOP**: Menggunakan kelas Game untuk mengelola tampilan dan interaksi menu.
 * **Penerapan SOLID (Optional)**:
 * **Design Pattern yang Digunakan (Optional)**:
 * **Code Snippet**:
+
+Menu
 ```
-def mainMenu(self):
-    while True:
-        # Draw menu
-        if event.type == pg.MOUSEBUTTONDOWN:
-            if start_rect.collidepoint(event.pos):
-                self.gameLoop()
+    def mainMenu(self):
+        while True:
+            self.win.fill((0, 0, 0))
+
+            # Draw menu buttons
+            title_text = self.font.render("Flappy Bird", True, (255, 255, 255))
+            start_text = self.font.render("Start", True, (255, 255, 255))
+            history_text = self.font.render("History", True, (255, 255, 255))
+            difficulty_text = self.font.render("Difficulty", True, (255, 255, 255))
+
+            title_rect = title_text.get_rect(center=(self.width // 2, 100))
+            start_rect = start_text.get_rect(center=(self.width // 2, 250))
+            history_rect = history_text.get_rect(center=(self.width // 2, 350))
+            difficulty_rect = difficulty_text.get_rect(center=(self.width // 2, 450))
+
+            self.win.blit(title_text, title_rect)
+            self.win.blit(start_text, start_rect)
+            self.win.blit(history_text, history_rect)
+            self.win.blit(difficulty_text, difficulty_rect)
+
+            pg.display.update()
+
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    self.score_manager.delete_score_history()
+                    sys.exit()
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    if start_rect.collidepoint(event.pos):
+                        self.gameLoop()
+                    elif history_rect.collidepoint(event.pos):
+                        self.showHistory()
+                    elif difficulty_rect.collidepoint(event.pos):
+                        self.selectDifficulty()
+```
+Tingkat Kesulitan
+```
+    def selectDifficulty(self):
+        while True:
+            self.win.fill((0, 0, 0))
+
+            easy_text = self.font.render("Easy", True, (255, 255, 255))
+            medium_text = self.font.render("Medium", True, (255, 255, 255))
+            hard_text = self.font.render("Hard", True, (255, 255, 255))
+
+            easy_rect = easy_text.get_rect(center=(self.width // 2, 250))
+            medium_rect = medium_text.get_rect(center=(self.width // 2, 350))
+            hard_rect = hard_text.get_rect(center=(self.width // 2, 450))
+
+            self.win.blit(easy_text, easy_rect)
+            self.win.blit(medium_text, medium_rect)
+            self.win.blit(hard_text, hard_rect)
+
+            pg.display.update()
+
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    self.score_manager.delete_score_history()
+                    sys.exit()
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    if easy_rect.collidepoint(event.pos):
+                        self.difficulty = "easy"
+                        return
+                    elif medium_rect.collidepoint(event.pos):
+                        self.difficulty = "medium"
+                        return
+                    elif hard_rect.collidepoint(event.pos):
+                        self.difficulty = "hard"
+                        return
 ```
 
 ### 4.2 Fitur Skor dan Riwayat
@@ -78,10 +208,31 @@ def mainMenu(self):
 * **Design Pattern yang Digunakan (Optional)**: Tidak ada.
 * **Code Snippet**: 
 ```
-def showHistory(self):
-    scores = read_score_history()
-    for i, score in enumerate(scores[-10:]):
-        history_line = self.font.render(f"{i + 1}. {score}", True, (255, 255, 255))
+    def showHistory(self):
+        while True:
+            self.win.fill((0, 0, 0))
+            history_text = self.font.render("Score History:", True, (255, 255, 255))
+            self.win.blit(history_text, (10, 10))
+
+            scores = self.score_manager.read_score_history()
+            for i, score in enumerate(scores[-10:]):  # Display the last 10 scores
+                history_line = self.font.render(f"{i + 1}. {score}", True, (255, 255, 255))
+                self.win.blit(history_line, (10, 50 + i * 30))
+
+            back_text = self.font.render("Back", True, (255, 0, 0))
+            back_rect = back_text.get_rect(center=(self.width // 2, self.height - 50))
+            self.win.blit(back_text, back_rect)
+
+            pg.display.update()
+
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    self.score_manager.delete_score_history()
+                    sys.exit()
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    if back_rect.collidepoint(event.pos):
+                        return
 ```
 
 ## 5. Screenshot dan Demo
